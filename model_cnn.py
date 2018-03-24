@@ -43,12 +43,13 @@ class CNN(nn.Module):
     def forward(self, x):
 
         x = self.conv1(x)
-        x =nn.Dropout(0.05)(x)
+        x =nn.Dropout(0.5)(x)
         x = self.conv2(x)
-        x = nn.Dropout(0.05)(x)
+        x = nn.Dropout(0.5)(x)
         x = self.conv3(x)
-        x = nn.Dropout(0.05)(x)
+        x = nn.Dropout(0.5)(x)
         x = self.conv4(x)
+        x = nn.Dropout(0.5)(x)
         x = x.view(x.size(0), -1)  # flat (batch_size, 128*8*8)
         output = self.out(x)
         return output
