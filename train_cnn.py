@@ -26,11 +26,11 @@ if __name__ == '__main__':
 
     EPOCH = 1000
     BATCH_SIZE = 100
-    LR = 0.001
+    LR = 1e-4
     # 获取训练集dataset
-    # 使用 ImageFolder 加载图片数据集，并进行transform变形(转成 128*128图片)
+    # 使用 ImageFolder 加载图片数据集，并进行transform变形(转成 64*64图片)
     transform = torchvision.transforms.Compose([
-        torchvision.transforms.Resize((128,128)),
+        torchvision.transforms.Resize((64,64)),
         torchvision.transforms.ToTensor()
     ])
     
@@ -73,8 +73,8 @@ if __name__ == '__main__':
     #training loop
     step=0
     for epoch in range(EPOCH):
-        train, devel = SplitSampler(len(training_data))
-        #取10%采样
+        train, devel = SplitSampler(len(training_data) ,split=0.2)
+        #取20%采样
         training_data_loader = Data.DataLoader(dataset=training_data, shuffle=False, batch_size=BATCH_SIZE, num_workers=10, sampler=devel)
 
         i=0

@@ -8,7 +8,7 @@ torch.manual_seed(1)
 # 获取测试训练集dataset
 # 使用 ImageFolder 加载图片数据集，并进行transform变形(转成 128*128图片)
 transform = torchvision.transforms.Compose([
-    torchvision.transforms.Resize((128,128)),
+    torchvision.transforms.Resize((64,64)),
     torchvision.transforms.ToTensor()
 ])
 test_data= torchvision.datasets.ImageFolder("dataset/test_set" ,transform=transform)
